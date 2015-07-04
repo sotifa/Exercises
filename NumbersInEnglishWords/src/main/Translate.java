@@ -19,11 +19,15 @@ public class Translate {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));        
 		System.out.println(WELCOME + Catalogue.getAvailableLanguages()); 
 		boolean continueAsking = true;
-		
+		String numberInInput = args!=null && args.length>0 ? args[0]:null;
+		 
 		while(continueAsking){
 			
 			inputValue = -1;
-			continueAsking = getUserInput(br);
+			continueAsking = getUserInput(br, numberInInput);
+			if(numberInInput!=null && !numberInInput.isEmpty()){
+				continueAsking = false;
+			}
 			
 			if(inputValue != -1){
 		        translate(inputValue, inputLanguage);
@@ -37,27 +41,33 @@ public class Translate {
         System.out.println(numberInWord.getTextualRepresentation());
 	}
 	
-	private static boolean getUserInput(BufferedReader br) throws IOException{
+	private static boolean getUserInput(BufferedReader br, String arg) throws IOException{
 		
-		System.out.println("\n"+INPUT_REQUEST+NumberInWord.MAX_VALUE);
-		
-		inputNumber = br.readLine();
-		
-		if(inputNumber.equalsIgnoreCase("E")){
-			return false;
-		}
-		
-		if(Catalogue.getAvailableLanguages().size()>1){
+		if(arg != null && !arg.isEmpty()){
+			inputNumber = arg;
 			
-			System.out.println(LANGUAGE_REQUEST + Catalogue.DEFAULT_LANGUAGE);
-			inputLanguage = br.readLine();
-			if(inputLanguage.replace(" ","").isEmpty()){
-				inputLanguage = Catalogue.DEFAULT_LANGUAGE;
+		}else{
+			
+			System.out.println("\n"+INPUT_REQUEST+NumberInWord.MAX_VALUE);
+			
+			inputNumber = br.readLine();
+			
+			if(inputNumber.equalsIgnoreCase("E")){
+				return false;
 			}
-		}			
-		if(inputLanguage.equalsIgnoreCase("E")){
-			return false;
-		}			
+			
+			if(Catalogue.getAvailableLanguages().size()>1){
+				
+				System.out.println(LANGUAGE_REQUEST + Catalogue.DEFAULT_LANGUAGE);
+				inputLanguage = br.readLine();
+				if(inputLanguage.replace(" ","").isEmpty()){
+					inputLanguage = Catalogue.DEFAULT_LANGUAGE;
+				}
+			}			
+			if(inputLanguage.equalsIgnoreCase("E")){
+				return false;
+			}		
+		}
         try{
             inputValue = Integer.parseInt(inputNumber);
             
