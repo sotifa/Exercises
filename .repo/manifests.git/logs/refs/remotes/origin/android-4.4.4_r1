@@ -1,1 +1,0 @@
-0000000000000000000000000000000000000000 aef5618278488f985ecd1d8576c2c2b3e09dbfc4 Pamela Lavra <plavra@loan-lin12.openbet> 1435705927 +0100	fetch --progress origin --tags +refs/heads/*:refs/remotes/origin/* +refs/heads/master:refs/remotes/origin/master: storing head
