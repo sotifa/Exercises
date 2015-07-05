@@ -37,8 +37,8 @@ public class Translate {
 	
 	private static void translate(int inputValue, String inputLanguage){
 		
-        NumberInWord numberInWord = new NumberInWord(inputValue, inputLanguage);
-        System.out.println(numberInWord.getTextualRepresentation());
+        	NumberInWord numberInWord = new NumberInWord(inputValue, inputLanguage);
+        	System.out.println(numberInWord.getTextualRepresentation());
 	}
 	
 	private static boolean getUserInput(BufferedReader br, String arg) throws IOException{
