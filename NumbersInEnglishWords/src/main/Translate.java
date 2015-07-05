@@ -30,7 +30,7 @@ public class Translate {
 			}
 			
 			if(inputValue != -1){
-		        translate(inputValue, inputLanguage);
+			        translate(inputValue, inputLanguage);
 			}		
 		}
 	}
